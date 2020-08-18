@@ -1,4 +1,4 @@
-<script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+<!-- <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 <script>
   const canvas = document.querySelector("#canvas");
@@ -16,4 +16,33 @@
     // Initializes a LIFF app
     liff.init(function(data) {});
   });
-</script>
+</script> -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My LIFF App</title>
+  </head>
+  <body>
+    <p id="scanCode"></p>
+    <p>
+      <button id="btnScanCode" onclick="scanCode();">Scan Code</button>
+    </p>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/liff.js"></script>
+    <script>
+      function scanCode() {
+        liff.scanCode().then((result) => {
+          const stringifiedResult = JSON.stringify(result);
+          alert(stringifiedResult);
+          document.getElementById("scanCode").textContent = stringifiedResult;
+        });
+      }
+      liff.init(
+        { liffId: "1654714900-2wmvPQrk" },
+        () => {},
+        (err) => console.error(err.code, error.message)
+      );
+    </script>
+  </body>
+</html>
